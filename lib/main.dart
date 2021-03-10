@@ -12,6 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //Controller
+  TextEditingController etInput = TextEditingController();
+
   // deklarasi variable
   double _inputUser = 0;
   double _centiMeter = 0;
@@ -37,6 +40,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               TextFormField(
+                controller: etInput,
                 decoration: const InputDecoration(
                   hintText: 'Masukkan Angka',
                 ),
