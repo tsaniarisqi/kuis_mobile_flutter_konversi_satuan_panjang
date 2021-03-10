@@ -31,12 +31,14 @@ class _MyAppState extends State<MyApp> {
   void dropdownOnChangedInput(String changeValue) {
     setState(() {
       _newValueInput = changeValue;
+      _konversi(); // ketika ada perubahan dropdown, aplikasi dapat memproses tanpa di klik button konversi
     });
   }
 
   void dropdownOnChangedResult(String changeValue) {
     setState(() {
       _newValueResult = changeValue;
+      _konversi(); // ketika ada perubahan dropdown, aplikasi dapat memproses tanpa di klik button konversi
     });
   }
 
@@ -49,32 +51,40 @@ class _MyAppState extends State<MyApp> {
           _result = _inputUser / 100000;
         } else if (_newValueResult == "Meter") {
           _result = _inputUser / 100;
-        } else {
+        } else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 10;
+        } else {
+          _result = _inputUser;
         }
       } else if (_newValueInput == "Kilometer") {
         if (_newValueResult == "Centimeter") {
           _result = _inputUser * 100000;
         } else if (_newValueResult == "Meter") {
           _result = _inputUser * 1000;
-        } else {
+        } else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 1000000;
+        } else {
+          _result = _inputUser;
         }
       } else if (_newValueInput == "Meter") {
         if (_newValueResult == "Centimeter") {
           _result = _inputUser * 100;
         } else if (_newValueResult == "Kilometer") {
           _result = _inputUser / 1000;
-        } else {
+        } else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 1000;
+        } else {
+          _result = _inputUser;
         }
       } else {
         if (_newValueResult == "Centimeter") {
           _result = _inputUser / 10;
         } else if (_newValueResult == "Kilometer") {
           _result = _inputUser / 1000000;
-        } else {
+        } else if (_newValueResult == "Meter") {
           _result = _inputUser / 1000;
+        } else {
+          _result = _inputUser;
         }
       }
     });
@@ -154,7 +164,7 @@ class _MyAppState extends State<MyApp> {
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      _result.toStringAsFixed(1),
+                      "$_result",
                       style: TextStyle(fontSize: 30),
                     ),
                   ],
@@ -165,7 +175,9 @@ class _MyAppState extends State<MyApp> {
                 height: 50,
                 // ignore: deprecated_member_use
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _konversi();
+                  },
                   color: Colors.indigo[200],
                   textColor: Colors.white,
                   child: const Text(
