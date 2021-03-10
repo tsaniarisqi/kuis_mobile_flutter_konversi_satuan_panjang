@@ -21,15 +21,22 @@ class _MyAppState extends State<MyApp> {
   double _kiloMeter = 0;
   double _meter = 0;
   double _miliMeter = 0;
-  String _newValue = "Meter";
+  String _newValueInput = "Meter";
+  String _newValueResult = "Meter";
   double _result = 0;
 
   // list
   var listItem = {"Centimeter", "Kilometer", "Meter", "Milimeter"};
 
-  void dropdownOnChanged(String changeValue) {
+  void dropdownOnChangedInput(String changeValue) {
     setState(() {
-      _newValue = changeValue;
+      _newValueInput = changeValue;
+    });
+  }
+  
+  void dropdownOnChangedResult(String changeValue) {
+    setState(() {
+      _newValueResult = changeValue;
     });
   }
 
@@ -71,10 +78,10 @@ class _MyAppState extends State<MyApp> {
                           child: Text(value),
                         );
                       }).toList(),
-                      value: _newValue,
+                      value: _newValueInput,
                       onChanged: (String changeValue) {
                         dropdownOnChanged:
-                        dropdownOnChanged(changeValue);
+                        dropdownOnChangedInput(changeValue);
                       },
                     ),
                     Text(
@@ -88,10 +95,10 @@ class _MyAppState extends State<MyApp> {
                           child: Text(value),
                         );
                       }).toList(),
-                      value: _newValue,
+                      value: _newValueResult,
                       onChanged: (String changeValue) {
                         dropdownOnChanged:
-                        dropdownOnChanged(changeValue);
+                        dropdownOnChangedResult(changeValue);
                       },
                     ),
                   ],
