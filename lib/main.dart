@@ -20,7 +20,23 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.indigo[200],
           title: Text("Konverter Satuan Panjang"),
         ),
-        body: Container(),
+        body: Container(
+          margin: EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Masukkan Angka',
+                ),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
