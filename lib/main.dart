@@ -22,6 +22,14 @@ class _MyAppState extends State<MyApp> {
   double _meter = 0;
   double _miliMeter = 0;
 
+  // list
+  var listItem = {
+    "Centimeter",
+    "Kilometer",
+    "Meter",
+    "Milimeter"
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
