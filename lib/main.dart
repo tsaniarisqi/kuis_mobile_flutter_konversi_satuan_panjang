@@ -21,14 +21,17 @@ class _MyAppState extends State<MyApp> {
   double _kiloMeter = 0;
   double _meter = 0;
   double _miliMeter = 0;
+  String _newValue = "Meter";
+  double _result = 0;
 
   // list
-  var listItem = {
-    "Centimeter",
-    "Kilometer",
-    "Meter",
-    "Milimeter"
-  };
+  var listItem = {"Centimeter", "Kilometer", "Meter", "Milimeter"};
+
+  void dropdownOnChanged(String changeValue) {
+    setState(() {
+      _newValue = changeValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +59,43 @@ class _MyAppState extends State<MyApp> {
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
                 ],
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DropdownButton<String>(
+                      items: listItem.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      value: _newValue,
+                      onChanged: (String changeValue) {
+                        dropdownOnChanged:
+                        dropdownOnChanged(changeValue);
+                      },
+                    ),
+                    Text(
+                      "Ke",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    DropdownButton<String>(
+                      items: listItem.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      value: _newValue,
+                      onChanged: (String changeValue) {
+                        dropdownOnChanged:
+                        dropdownOnChanged(changeValue);
+                      },
+                    ),
+                  ],
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 20, bottom: 20),
