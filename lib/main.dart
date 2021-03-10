@@ -33,10 +33,50 @@ class _MyAppState extends State<MyApp> {
       _newValueInput = changeValue;
     });
   }
-  
+
   void dropdownOnChangedResult(String changeValue) {
     setState(() {
       _newValueResult = changeValue;
+    });
+  }
+
+  // fungsi konversi untuk melakukan perhitungan konversi satuan panjang
+  void _konversi() {
+    setState(() {
+      _inputUser = double.parse(etInput.text);
+      if (_newValueInput == "Centimeter") {
+        if (_newValueResult == "Kilometer") {
+          _result = _inputUser / 100000;
+        } else if (_newValueResult == "Meter") {
+          _result = _inputUser / 100;
+        } else {
+          _result = _inputUser * 10;
+        }
+      } else if (_newValueInput == "Kilometer") {
+        if (_newValueResult == "Centimeter") {
+          _result = _inputUser * 100000;
+        } else if (_newValueResult == "Meter") {
+          _result = _inputUser * 1000;
+        } else {
+          _result = _inputUser * 1000000;
+        }
+      } else if (_newValueInput == "Meter") {
+        if (_newValueResult == "Centimeter") {
+          _result = _inputUser * 100;
+        } else if (_newValueResult == "Kilometer") {
+          _result = _inputUser / 1000;
+        } else {
+          _result = _inputUser * 1000;
+        }
+      } else {
+        if (_newValueResult == "Centimeter") {
+          _result = _inputUser / 10;
+        } else if (_newValueResult == "Kilometer") {
+          _result = _inputUser / 1000000;
+        } else {
+          _result = _inputUser / 1000;
+        }
+      }
     });
   }
 
@@ -113,7 +153,10 @@ class _MyAppState extends State<MyApp> {
                       "Hasil",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Text(""),
+                    Text(
+                      _result.toStringAsFixed(1),
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ],
                 ),
               ),
