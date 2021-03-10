@@ -12,6 +12,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // deklarasi variable
+  double _inputUser = 0;
+  double _centiMeter = 0;
+  double _kiloMeter = 0;
+  double _meter = 0;
+  double _miliMeter = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
