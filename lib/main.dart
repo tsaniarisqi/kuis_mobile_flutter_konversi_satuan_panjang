@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.indigo[200],
+          backgroundColor: Colors.indigo[300],
           title: Text("Konverter Satuan Panjang"),
         ),
         body: Container(
@@ -42,10 +42,22 @@ class MyApp extends StatelessWidget {
                       "Hasil",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Text(
-                      ""
-                    ),
+                    Text(""),
                   ],
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                // ignore: deprecated_member_use
+                child: RaisedButton(
+                  onPressed: () {},
+                  color: Colors.indigo[200],
+                  textColor: Colors.white,
+                  child: const Text(
+                    'Konversi',
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                  ),
                 ),
               )
             ],
