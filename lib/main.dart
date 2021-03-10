@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
         body: Container(
           margin: EdgeInsets.all(8),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextFormField(
                 decoration: const InputDecoration(
@@ -34,6 +33,21 @@ class MyApp extends StatelessWidget {
                   FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
                 ],
               ),
+              Container(
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Hasil",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      ""
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
