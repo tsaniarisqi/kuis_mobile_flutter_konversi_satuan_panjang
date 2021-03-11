@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'input.dart';
 import 'dropdownInput.dart';
 import 'dropdownResult.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,7 +38,6 @@ class _MyAppState extends State<MyApp> {
   void dropdownOnChangedInput(String changeValue) {
     setState(() {
       _newValueInput = changeValue;
-      _konversi(); // ketika ada perubahan dropdown, aplikasi dapat memproses tanpa di klik button konversi
     });
   }
 
@@ -154,22 +154,7 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 20, bottom: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Hasil",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      "$_result",
-                      style: TextStyle(fontSize: 30),
-                    ),
-                  ],
-                ),
-              ),
+              Result(result: _result),
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -230,3 +215,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
