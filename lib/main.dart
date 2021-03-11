@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
   // list
   var listItem = {"Centimeter", "Kilometer", "Meter", "Milimeter"};
 
+  // fungsi dropdownOnChangedInput digunakan ketika user melakukan perubahan pada dropdownButton
   void dropdownOnChangedInput(String changeValue) {
     setState(() {
       _newValueInput = changeValue;
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // fungsi dropdownOnChangedResult digunakan ketika user melakukan perubahan pada dropdownButton
   void dropdownOnChangedResult(String changeValue) {
     setState(() {
       _newValueResult = changeValue;
@@ -90,7 +92,8 @@ class _MyAppState extends State<MyApp> {
         }
       }
       // untuk menampilkan hasil riwayat
-      listViewItem.add("$_inputUser $_newValueInput = $_result $_newValueResult");
+      listViewItem
+          .add("$_inputUser $_newValueInput = $_result $_newValueResult");
     });
   }
 
@@ -125,35 +128,70 @@ class _MyAppState extends State<MyApp> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    DropdownButton<String>(
-                      items: listItem.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      value: _newValueInput,
-                      onChanged: (String changeValue) {
-                        dropdownOnChanged:
-                        dropdownOnChangedInput(changeValue);
-                      },
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      // Margin untuk megatur jarak container dengan widget lainnya
+                      // (hanya bagian kanan sebesar 15)
+                      child: DropdownButton<String>(
+                        // String untuk memberi tipe data value dari dropdown adalah
+                        // bertipe sting
+                        items: listItem.map((String value) {
+                          // ListItem.map ((String(value) untuk melakukan iterasi untuk
+                          // setiap item dari listItem sesuai parameter bertipe String
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        // .toList() untuk mengubah item ke dalam list
+                        value: _newValueInput,
+                        // value: _newValueInput untuk mengeset value pada DropdownButton
+                        // secara default
+                        onChanged: (String changeValue) {
+                          // ketika user melakukan perubahan pada dropdownButton,maka akan
+                          // memanggil fungsi dropdownOnChangedInput
+                          dropdownOnChanged:
+                          dropdownOnChangedInput(changeValue);
+                        },
+                      ),
                     ),
-                    Text(
-                      "Ke",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Container(
+                      // Margin untuk megatur jarak container dengan widget lainnya
+                      // (hanya bagian kanan dan kiri sebesar 20)
+                      margin: EdgeInsets.only(right: 20, left: 20),
+                      child: Text(
+                        "->",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w600),
+                        // textStyle untuk mengatur style dari text
+                      ),
                     ),
-                    DropdownButton<String>(
-                      items: listItem.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      value: _newValueResult,
-                      onChanged: (String changeValue) {
-                        dropdownOnChanged:
-                        dropdownOnChangedResult(changeValue);
-                      },
+                    Container(
+                      margin: EdgeInsets.only(left: 15),
+                      // Margin untuk megatur jarak container dengan widget lainnya
+                      // (hanya bagian kiri sebesar 15)
+                      child: DropdownButton<String>(
+                        // String untuk memberi tipe data value dari dropdown adalah
+                        // bertipe sting
+                        items: listItem.map((String value) {
+                          // ListItem.map ((String(value) untuk melakukan iterasi untuk
+                          // setiap item dari listItem sesuai parameter bertipe String
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(), 
+                        // .toList() untuk mengubah item ke dalam list
+                        value: _newValueResult,
+                        // value:_newValueResult untuk mengeset value pada DropdownButton
+                        // secara default
+                        onChanged: (String changeValue) {
+                          // ketika user melakukan perubahan pada dropdownButton, maka akan
+                          // memanggil fungsi dropdownOnChangedResult
+                          dropdownOnChanged:
+                          dropdownOnChangedResult(changeValue);
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -198,8 +236,10 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Expanded(
-                child: ListView( // listView widget untuk menampilan data dalam bentuk list
-                  children: listViewItem.map((String value) { // menampilkan hail listViewItem menggunakan map
+                child: ListView(
+                  // listView widget untuk menampilan data dalam bentuk list
+                  children: listViewItem.map((String value) {
+                    // menampilkan hail listViewItem menggunakan map
                     return Container(
                         margin: EdgeInsets.all(10),
                         child: Text(
