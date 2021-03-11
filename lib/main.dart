@@ -180,7 +180,7 @@ class _MyAppState extends State<MyApp> {
                             value: value,
                             child: Text(value),
                           );
-                        }).toList(), 
+                        }).toList(),
                         // .toList() untuk mengubah item ke dalam list
                         value: _newValueResult,
                         // value:_newValueResult untuk mengeset value pada DropdownButton
@@ -229,24 +229,40 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, bottom: 10),
+                margin: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text(
                   "Riwayat Konversi",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               Expanded(
-                child: ListView(
-                  // listView widget untuk menampilan data dalam bentuk list
-                  children: listViewItem.map((String value) {
-                    // menampilkan hail listViewItem menggunakan map
-                    return Container(
-                        margin: EdgeInsets.all(10),
-                        child: Text(
-                          value,
-                          style: TextStyle(fontSize: 15),
-                        ));
-                  }).toList(),
+                child: Container(
+                  margin: EdgeInsets.all(3),
+                  decoration: new BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: Offset(0, 3),
+                      )
+                    ],
+                  ),
+                  child: ListView(
+                    // listView widget untuk menampilan data dalam bentuk list
+                    children: listViewItem.map((String value) {
+                      // menampilkan hail listViewItem menggunakan map
+                      return Container(
+                          margin: EdgeInsets.all(10),
+                          child: Text(
+                            value,
+                            style: TextStyle(fontSize: 15),
+                          ));
+                    }).toList(),
+                    // .toList() untuk mengubah item ke dalam list
+                  ),
                 ),
               )
             ],
