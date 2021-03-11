@@ -102,6 +102,13 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // fungsi untuk menghapus riwayat konversi
+  void _deleteRiwayat() {
+    setState(() {
+      listViewItem.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -167,6 +174,26 @@ class _MyAppState extends State<MyApp> {
               ),
               Expanded(
                 child: RiwayatKonversi(listViewItem: listViewItem),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    onPressed: () {
+                      _deleteRiwayat();
+                    },
+                    color: Colors.indigo[200],
+                    textColor: Colors.white,
+                    child: const Text(
+                      'Hapus Riwayat',
+                      style:
+                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               )
             ],
           ),
@@ -175,4 +202,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
