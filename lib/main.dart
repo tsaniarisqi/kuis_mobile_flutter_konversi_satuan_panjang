@@ -6,6 +6,7 @@ import 'dropdownResult.dart';
 import 'result.dart';
 import 'convert.dart';
 import 'riwayatKonversi.dart';
+import 'deleteRiwayatKonversi.dart';
 
 void main() {
   runApp(MyApp());
@@ -175,26 +176,7 @@ class _MyAppState extends State<MyApp> {
               Expanded(
                 child: RiwayatKonversi(listViewItem: listViewItem),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  // ignore: deprecated_member_use
-                  child: RaisedButton(
-                    onPressed: () {
-                      _deleteRiwayat();
-                    },
-                    color: Colors.indigo[200],
-                    textColor: Colors.white,
-                    child: const Text(
-                      'Hapus Riwayat',
-                      style:
-                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              )
+              DeleteRiwayatKonversi(deleteHistory: _deleteRiwayat),
             ],
           ),
         ),
