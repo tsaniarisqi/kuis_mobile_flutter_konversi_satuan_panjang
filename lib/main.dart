@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'input.dart';
 
 void main() {
   runApp(MyApp());
@@ -114,16 +115,7 @@ class _MyAppState extends State<MyApp> {
           margin: EdgeInsets.all(8),
           child: Column(
             children: [
-              TextFormField(
-                controller: etInput,
-                decoration: const InputDecoration(
-                  hintText: 'Masukkan Angka',
-                ),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
-                ],
-              ),
+              Input(etInput: etInput),
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
