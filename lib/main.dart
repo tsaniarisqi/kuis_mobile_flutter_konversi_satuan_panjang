@@ -4,6 +4,7 @@ import 'input.dart';
 import 'dropdownInput.dart';
 import 'dropdownResult.dart';
 import 'result.dart';
+import 'convert.dart';
 
 void main() {
   runApp(MyApp());
@@ -155,22 +156,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Result(result: _result),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {
-                    _konversi();
-                  },
-                  color: Colors.indigo[200],
-                  textColor: Colors.white,
-                  child: const Text(
-                    'Konversi',
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+              Convert(konvertHandler: _konversi),
               Container(
                 margin: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text(
