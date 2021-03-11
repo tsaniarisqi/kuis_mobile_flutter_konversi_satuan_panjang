@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'input.dart';
+import 'dropdownInput.dart';
 
 void main() {
   runApp(MyApp());
@@ -124,28 +125,10 @@ class _MyAppState extends State<MyApp> {
                       margin: EdgeInsets.only(right: 15),
                       // Margin untuk megatur jarak container dengan widget lainnya
                       // (hanya bagian kanan sebesar 15)
-                      child: DropdownButton<String>(
-                        // String untuk memberi tipe data value dari dropdown adalah
-                        // bertipe sting
-                        items: listItem.map((String value) {
-                          // ListItem.map ((String(value) untuk melakukan iterasi untuk
-                          // setiap item dari listItem sesuai parameter bertipe String
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        // .toList() untuk mengubah item ke dalam list
-                        value: _newValueInput,
-                        // value: _newValueInput untuk mengeset value pada DropdownButton
-                        // secara default
-                        onChanged: (String changeValue) {
-                          // ketika user melakukan perubahan pada dropdownButton,maka akan
-                          // memanggil fungsi dropdownOnChangedInput
-                          dropdownOnChanged:
-                          dropdownOnChangedInput(changeValue);
-                        },
-                      ),
+                      child: DropdownButtonInput(
+                          listItem: listItem,
+                          newValueInput: _newValueInput,
+                          dropdownOnChangedInput: dropdownOnChangedInput),
                     ),
                     Container(
                       // Margin untuk megatur jarak container dengan widget lainnya
