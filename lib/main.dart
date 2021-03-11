@@ -24,6 +24,8 @@ class _MyAppState extends State<MyApp> {
   String _newValueInput = "Meter";
   String _newValueResult = "Meter";
   double _result = 0;
+  // ignore: deprecated_member_use
+  List<String> listViewItem = List<String>();
 
   // list
   var listItem = {"Centimeter", "Kilometer", "Meter", "Milimeter"};
@@ -87,6 +89,8 @@ class _MyAppState extends State<MyApp> {
           _result = _inputUser;
         }
       }
+      // untuk menampilkan hasil riwayat
+      listViewItem.add("$_inputUser $_newValueInput = $_result $_newValueResult");
     });
   }
 
@@ -184,6 +188,25 @@ class _MyAppState extends State<MyApp> {
                     'Konversi',
                     style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                   ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: Text(
+                  "Riwayat Konversi",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Expanded(
+                child: ListView( // listView widget untuk menampilan data dalam bentuk list
+                  children: listViewItem.map((String value) { // menampilkan hail listViewItem menggunakan map
+                    return Container(
+                        margin: EdgeInsets.all(10),
+                        child: Text(
+                          value,
+                          style: TextStyle(fontSize: 15),
+                        ));
+                  }).toList(),
                 ),
               )
             ],
