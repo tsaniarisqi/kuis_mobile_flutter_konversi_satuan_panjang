@@ -24,12 +24,8 @@ class _MyAppState extends State<MyApp> {
 
   // deklarasi variable
   double _inputUser = 0;
-  double _centiMeter = 0;
-  double _kiloMeter = 0;
-  double _meter = 0;
-  double _miliMeter = 0;
   String _newValueInput = "Meter";
-  String _newValueResult = "Meter";
+  String _newValueResult = "Centimeter";
   double _result = 0;
   // ignore: deprecated_member_use
   List<String> listViewItem = List<String>();
@@ -37,14 +33,14 @@ class _MyAppState extends State<MyApp> {
   // list
   var listItem = {"Centimeter", "Kilometer", "Meter", "Milimeter"};
 
-  // fungsi dropdownOnChangedInput digunakan ketika user melakukan perubahan pada dropdownButton
+  // fungsi dropdownOnChangedInput digunakan ketika user melakukan perubahan pada dropdownButtonInput
   void dropdownOnChangedInput(String changeValue) {
     setState(() {
       _newValueInput = changeValue;
     });
   }
 
-  // fungsi dropdownOnChangedResult digunakan ketika user melakukan perubahan pada dropdownButton
+  // fungsi dropdownOnChangedResult digunakan ketika user melakukan perubahan pada dropdownButtonResult
   void dropdownOnChangedResult(String changeValue) {
     setState(() {
       _newValueResult = changeValue;
@@ -55,45 +51,86 @@ class _MyAppState extends State<MyApp> {
   // fungsi konversi untuk melakukan perhitungan konversi satuan panjang
   void _konversi() {
     setState(() {
+      // mengubah string ke double
       _inputUser = double.parse(etInput.text);
+      // jika dropdownInput yang dipilih = centimeter, maka kondisi ini terpenuhi
       if (_newValueInput == "Centimeter") {
+        // jika dropdownResult yang dipilih = Kilometer, maka kondisi ini terpenuhi.
         if (_newValueResult == "Kilometer") {
           _result = _inputUser / 100000;
-        } else if (_newValueResult == "Meter") {
+        }
+        // jika dropdownResult yang dipilih = Meter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Meter") {
           _result = _inputUser / 100;
-        } else if (_newValueResult == "Milimeter") {
+        }
+        // jika dropdownResult yang dipilih = Milimeter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 10;
-        } else {
+        }
+        // kondisi ini terpenuhi jika dropdownResult yang dipilih tidak memenuhi
+        // kondisi diatas/sisa dari listItem, yaitu Centimeter
+        else {
           _result = _inputUser;
         }
-      } else if (_newValueInput == "Kilometer") {
+      }
+      // jika dropdownInput yang dipilih = Kilometer, maka kondisi ini terpenuhi
+      else if (_newValueInput == "Kilometer") {
+        // jika dropdownResult yang dipilih = Centimeter, maka kondisi ini terpenuhi.
         if (_newValueResult == "Centimeter") {
           _result = _inputUser * 100000;
-        } else if (_newValueResult == "Meter") {
+        }
+        // jika dropdownResult yang dipilih = Meter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Meter") {
           _result = _inputUser * 1000;
-        } else if (_newValueResult == "Milimeter") {
+        }
+        // jika dropdownResult yang dipilih = Milimeter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 1000000;
-        } else {
+        }
+        // kondisi ini terpenuhi jika dropdownResult yang dipilih tidak memenuhi
+        // kondisi diatas/sisa dari listItem, yaitu Kilometer
+        else {
           _result = _inputUser;
         }
-      } else if (_newValueInput == "Meter") {
+      }
+      // jika dropdownInput yang dipilih = Meter, maka kondisi ini terpenuhi
+      else if (_newValueInput == "Meter") {
+        // jika dropdownResult yang dipilih = Centimeter, maka kondisi ini terpenuhi.
         if (_newValueResult == "Centimeter") {
           _result = _inputUser * 100;
-        } else if (_newValueResult == "Kilometer") {
+        }
+        // jika dropdownResult yang dipilih = Kilometer, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Kilometer") {
           _result = _inputUser / 1000;
-        } else if (_newValueResult == "Milimeter") {
+        }
+        // jika dropdownResult yang dipilih = Milimeter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Milimeter") {
           _result = _inputUser * 1000;
-        } else {
+        }
+        // kondisi ini terpenuhi jika dropdownResult yang dipilih tidak memenuhi
+        // kondisi diatas/sisa dari listItem, yaitu Meter
+        else {
           _result = _inputUser;
         }
-      } else {
+      }
+      // kondisi ini terpenuhi jika dropdownInput yang dipilih tidak memenuhi
+      // kondisi diatas/sisa dari listItem, yaitu Milimeter
+      else {
+        // jika dropdownResult yang dipilih = Centimeter, maka kondisi ini terpenuhi.
         if (_newValueResult == "Centimeter") {
           _result = _inputUser / 10;
-        } else if (_newValueResult == "Kilometer") {
+        }
+        // jika dropdownResult yang dipilih = Kilometer, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Kilometer") {
           _result = _inputUser / 1000000;
-        } else if (_newValueResult == "Meter") {
+        }
+        // jika dropdownResult yang dipilih = Meter, maka kondisi ini terpenuhi.
+        else if (_newValueResult == "Meter") {
           _result = _inputUser / 1000;
-        } else {
+        }
+        // kondisi ini terpenuhi jika dropdownResult yang dipilih tidak memenuhi
+        // kondisi diatas/sisa dari listItem, yaitu Milimeter
+        else {
           _result = _inputUser;
         }
       }
@@ -103,10 +140,11 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  // fungsi untuk menghapus riwayat konversi
+  // fungsi deleteRiwayat untuk menghapus riwayat konversi
   void _deleteRiwayat() {
     setState(() {
       listViewItem.clear();
+      // .clear untuk me-remove semua isi dari listViewItem
     });
   }
 
